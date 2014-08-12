@@ -17,7 +17,7 @@ import javax.persistence.Id;
  * @author Aidem
  */
 @Entity
-public class Sujects implements Serializable {
+public class Subjects implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +28,7 @@ public class Sujects implements Serializable {
     private String co_ordenator;
     private String courseID;
     
-    private Sujects(Builder builder) {
+    private Subjects(Builder builder) {
         id = builder.id;
         subjectID = builder.subjectID;
         name = builder.name;
@@ -69,7 +69,7 @@ public class Sujects implements Serializable {
         
 
        
-        public Builder Sujects(Sujects student){
+        public Builder Sujects(Subjects student){
             id = student.getId();
             subjectID = student.getSubjectID();
             name = student.getName();
@@ -79,8 +79,8 @@ public class Sujects implements Serializable {
             
         }
         
-        public Sujects build(){
-            return new Sujects(this);
+        public Subjects build(){
+            return new Subjects(this);
         }
 
     }
@@ -118,10 +118,10 @@ public class Sujects implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Sujects)) {
+        if (!(object instanceof Subjects)) {
             return false;
         }
-        Sujects other = (Sujects) object;
+        Subjects other = (Subjects) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

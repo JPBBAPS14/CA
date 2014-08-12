@@ -7,7 +7,12 @@
 package com.cput.classattendance.domain;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -17,8 +22,12 @@ import javax.persistence.Embeddable;
 public class StudentSubjects implements Serializable {
 
     private Long id;
-    private String subjectID;
-    private String studentID;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "student_id")
+    private List<Student> studentID;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "subject_id")
+    private List<Subjects> subjectID;
     private String examID;
 
     public Long getId() {
@@ -29,19 +38,19 @@ public class StudentSubjects implements Serializable {
         this.id = id;
     }
 
-    public String getSubjectID() {
+    public List<Subjects> getSubjectID() {
         return subjectID;
     }
 
-    public void setSubjectID(String subjectID) {
+    public void setSubjectID(List<Subjects> subjectID) {
         this.subjectID = subjectID;
     }
 
-    public String getStudentID() {
+    public List<Student> getStudentID() {
         return studentID;
     }
 
-    public void setStudentID(String studentID) {
+    public void setStudentID(List<Student> studentID) {
         this.studentID = studentID;
     }
 
