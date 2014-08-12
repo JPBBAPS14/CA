@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -21,6 +22,10 @@ import javax.persistence.Temporal;
 @Entity
 public class Class implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -28,7 +33,9 @@ public class Class implements Serializable {
     private Date startTime;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date endTime;
-
+    @ManyToOne
+    private Lecturer lecturerID;
+    
     private Class(Builder builder) {
         id = builder.id;
         startTime = builder.startTime;
@@ -82,6 +89,10 @@ public class Class implements Serializable {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
+    }
+
+    public Lecturer getLecturerID() {
+        return lecturerID;
     }
     
      public static class Builder {

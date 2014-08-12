@@ -6,6 +6,7 @@
 package com.cput.classattendance.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,10 @@ import javax.persistence.OneToMany;
 public class Lecturer implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -28,7 +33,7 @@ public class Lecturer implements Serializable {
     private long telephone_no;
     private String email;
     @OneToMany
-    private Class classId;
+    private List<Class> classId;
 
     private Lecturer(Builder builder) {
         id = builder.id;
@@ -36,7 +41,7 @@ public class Lecturer implements Serializable {
         officeRoom=builder.officeRoom;
         telephone_no=builder.telephone_no;
         email=builder.email;
-        classId=builder.classId;
+        classId = builder.classId;
     }
 
     public Long getId() {
@@ -104,13 +109,10 @@ public class Lecturer implements Serializable {
         this.email = email;
     }
 
-    public Class getClassId() {
+    public List<Class> getClassId() {
         return classId;
     }
 
-    public void setClassId(Class classId) {
-        this.classId = classId;
-    }
 
     public static class Builder {
 
@@ -119,7 +121,7 @@ public class Lecturer implements Serializable {
         private String officeRoom;
         private long telephone_no;
         private String email;
-        private Class classId;
+        private List<Class> classId;
 
         public Builder() {
         }
@@ -149,7 +151,7 @@ public class Lecturer implements Serializable {
             return this;
         }
 
-        public Builder classId(Class value) {
+        public Builder classId(List<Class> value) {
             this.classId = value;
             return this;
         }
