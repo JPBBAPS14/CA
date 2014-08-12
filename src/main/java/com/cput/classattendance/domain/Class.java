@@ -7,10 +7,12 @@
 package com.cput.classattendance.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -22,7 +24,17 @@ public class Class implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date startTime;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date endTime;
 
+    private Class(Builder builder) {
+        id = builder.id;
+        startTime = builder.startTime;
+        endTime = builder.endTime;
+    }
+    
     public Long getId() {
         return id;
     }
@@ -54,6 +66,60 @@ public class Class implements Serializable {
     @Override
     public String toString() {
         return "com.cput.classattendance.domain.Class[ id=" + id + " ]";
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+    
+     public static class Builder {
+
+        private Long id;
+        @Temporal(javax.persistence.TemporalType.DATE)
+        private Date startTime;
+        @Temporal(javax.persistence.TemporalType.DATE)
+        private Date endTime;
+        
+        public Builder(){}
+        
+        public Builder id(Long value) {
+            this.id = value;
+            return this;
+        }
+
+        public Builder startTime(Date value) {
+            this.startTime = value;
+            return this;
+        }
+
+        public Builder endTime(Date value) {
+            this.endTime = value;
+            return this;
+        }
+
+        public Builder Exams(Exams value) {
+            id = value.getId();
+            startTime = value.getStartTime();
+            endTime = value.getEndTime();
+            return this;
+        }
+
+        public Class build() {
+            return new Class(this); 
+        }
+
     }
     
 }
