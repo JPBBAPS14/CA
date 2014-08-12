@@ -3,6 +3,8 @@
   <persistence-unit name="com.CPUT_ClassAttendance_war_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.cput.classattendance.domain.Exams</class>
+    <class>com.cput.classattendance.domain.Lecturer</class>
+    <class>com.cput.classattendance.domain.Class</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
