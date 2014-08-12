@@ -120,7 +120,7 @@ public class Class implements Serializable {
             return this;
         }
 
-        public Builder Exams(Exams value) {
+        public Builder Class(Class value) {
             id = value.getId();
             startTime = value.getStartTime();
             endTime = value.getEndTime();

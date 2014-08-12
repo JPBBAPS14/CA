@@ -34,7 +34,7 @@ public class Lecturer implements Serializable {
     private String email;
     @OneToMany
     private List<Class> classId;
-
+    
     private Lecturer(Builder builder) {
         id = builder.id;
         name=builder.name;
