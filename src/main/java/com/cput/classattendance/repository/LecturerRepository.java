@@ -6,12 +6,13 @@
 
 package com.cput.classattendance.repository;
 
+import com.cput.classattendance.domain.Lecturer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author 211064084
  */
-public interface LecturerRepository extends JpaRepository<LecturerRepository, Long> {
+public interface LecturerRepository extends JpaRepository<Lecturer, Long> {
     
 }
