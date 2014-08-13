@@ -28,7 +28,9 @@ public class StudentSubjects implements Serializable {
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "subject_id")
     private List<Subjects> subjectID;
-    private String examID;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "exam_id")
+    private List<Exams> examID;
 
     public Long getId() {
         return id;
@@ -54,11 +56,11 @@ public class StudentSubjects implements Serializable {
         this.studentID = studentID;
     }
 
-    public String getExamID() {
+    public List<Exams> getExamID() {
         return examID;
     }
 
-    public void setExamID(String examID) {
+    public void setExamID(List<Exams> examID) {
         this.examID = examID;
     }
 
