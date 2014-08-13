@@ -7,10 +7,15 @@
 package com.cput.classattendance.domain;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,9 +29,14 @@ public class AcademicYear implements Serializable {
     private Long id;
     private String academicID;
     
+   @ManyToOne (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+   @JoinColumn (name = "academicID")
+    private ClassAcademic classAcademic;
+    
      private AcademicYear(Builder builder) {
         id = builder.id;
         academicID = builder.academicID;
+         this.classAcademic = builder.classAcademic; 
         
     }
      
@@ -37,6 +47,7 @@ public class AcademicYear implements Serializable {
         
         private Long id;
         private String academicID;
+        private ClassAcademic classAcademic;
         
          public Builder(String academicID) {
             this.academicID = academicID;
@@ -45,12 +56,20 @@ public class AcademicYear implements Serializable {
         public Builder id(Long value) {
             this.id = value;
             return this;
+            
+        
+        }
+        
+        public Builder ClassAcademics(ClassAcademic classAcademic) {
+            this.classAcademic = classAcademic;
+            return this;
         }
         
         
         public Builder AcademicYear(AcademicYear value) {
             id = value.getId();
             academicID = value.getAcademicID();
+            this.classAcademic = value.getClassAcademic();
          return this;   
         }
 
@@ -73,6 +92,14 @@ public class AcademicYear implements Serializable {
 
     public void setAcademicID(String academicID) {
         this.academicID = academicID;
+    }
+
+    public ClassAcademic getClassAcademic() {
+        return classAcademic;
+    }
+
+    public void setClassAcademic(ClassAcademic classAcademic) {
+        this.classAcademic = classAcademic;
     }
     
     
@@ -99,7 +126,7 @@ public class AcademicYear implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sandisiwe.intergratedproject.domain.AcademicYear[ id=" + id + " ]";
+        return "com.cput.classattendance.domain.Class[ id=" + id + " ]";
     }
     
 }
