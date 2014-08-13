@@ -12,6 +12,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author 211064084
  */
-public interface Exams extends JpaRepository<Exams, Long> {
+public interface ExamsRepository extends JpaRepository<ExamsRepository, Long> {
     
 }
