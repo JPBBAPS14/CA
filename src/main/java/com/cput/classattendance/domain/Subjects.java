@@ -69,7 +69,7 @@ public class Subjects implements Serializable {
         
 
        
-        public Builder Sujects(Subjects student){
+        public Builder Subjects(Subjects student){
             id = student.getId();
             subjectID = student.getSubjectID();
             name = student.getName();
