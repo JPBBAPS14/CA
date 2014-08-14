@@ -33,7 +33,7 @@ public class Lecturer implements Serializable {
     private long telephone_no;
     private String email;
     @OneToMany
-    private List<Class> classId;
+    private List<ClassDetails> classId;
     
     private Lecturer(Builder builder) {
         id = builder.id;
@@ -109,7 +109,7 @@ public class Lecturer implements Serializable {
         this.email = email;
     }
 
-    public List<Class> getClassId() {
+    public List<ClassDetails> getClassId() {
         return classId;
     }
 
@@ -121,7 +121,7 @@ public class Lecturer implements Serializable {
         private String officeRoom;
         private long telephone_no;
         private String email;
-        private List<Class> classId;
+        private List<ClassDetails> classId;
 
         public Builder() {
         }
@@ -151,7 +151,7 @@ public class Lecturer implements Serializable {
             return this;
         }
 
-        public Builder classId(List<Class> value) {
+        public Builder classId(List<ClassDetails> value) {
             this.classId = value;
             return this;
         }

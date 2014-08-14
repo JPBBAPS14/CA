@@ -38,7 +38,7 @@ public class ClassAcademic implements Serializable {
     
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "classID")
-    private Class classes;
+    private ClassDetails classes;
     
     private ClassAcademic(Builder builder) {
         this.id = builder.id;
@@ -59,7 +59,7 @@ public class ClassAcademic implements Serializable {
     private String classID;
     private String vanue;
     private AcademicYear year;
-    private Class classes;
+    private ClassDetails classes;
     
     public Builder(String academicID) {
             this.academicID = academicID;
@@ -84,7 +84,7 @@ public class ClassAcademic implements Serializable {
             return this;
         }
      
-      public Builder Classes(Class classes) {
+      public Builder Classes(ClassDetails classes) {
             this.classes = classes;
             return this;
         }
@@ -146,11 +146,11 @@ public class ClassAcademic implements Serializable {
         this.year = year;
     }
 
-    public Class getClasses() {
+    public ClassDetails getClasses() {
         return classes;
     }
 
-    public void setClasses(Class classes) {
+    public void setClasses(ClassDetails classes) {
         this.classes = classes;
     }
     

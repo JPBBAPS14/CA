@@ -40,7 +40,7 @@ public class StudentSubjects implements Serializable {
     
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "class_id")
-    private List<Class> classID;
+    private List<ClassDetails> classID;
 
     public void setId(Long id) {
         this.id = id;
@@ -58,7 +58,7 @@ public class StudentSubjects implements Serializable {
         this.examID = examID;
     }
     
-    public void setClassID(List<Class> classID) {
+    public void setClassID(List<ClassDetails> classID) {
         this.classID = classID;
     }
     
@@ -78,7 +78,7 @@ public class StudentSubjects implements Serializable {
         return examID;
     }
     
-    public List<Class> getClassID() {
+    public List<ClassDetails> getClassID() {
         return classID;
     }
     

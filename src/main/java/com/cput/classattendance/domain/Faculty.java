@@ -6,7 +6,7 @@
 
 package com.cput.classattendance.domain;
 
-import com.cput.classattendance.domain.Class.Builder;
+import com.cput.classattendance.domain.ClassDetails.Builder;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
