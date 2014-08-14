@@ -7,10 +7,16 @@
 package com.cput.classattendance.domain;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 
 /**
  *
@@ -26,11 +32,21 @@ public class ClassAcademic implements Serializable {
     private String classID;
     private String vanue;
     
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "academicID")
+    private AcademicYear year;
+    
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "classID")
+    private Class classes;
+    
     private ClassAcademic(Builder builder) {
-        id = builder.id;
-        academicID = builder.academicID;
-        classID = builder.classID;
-        vanue = builder.vanue;
+        this.id = builder.id;
+        this.academicID = builder.academicID;
+        this.classID = builder.classID;
+        this.vanue = builder.vanue;
+        this.year = builder.year;
+        this.classes = builder.classes;
     }
 
     private ClassAcademic() {
@@ -42,7 +58,8 @@ public class ClassAcademic implements Serializable {
     private String academicID;
     private String classID;
     private String vanue;
-        
+    private AcademicYear year;
+    private Class classes;
     
     public Builder(String academicID) {
             this.academicID = academicID;
@@ -62,11 +79,23 @@ public class ClassAcademic implements Serializable {
             return this;
         }
     
+     public Builder AcademicYears(AcademicYear year) {
+            this.year = year;
+            return this;
+        }
+     
+      public Builder Classes(Class classes) {
+            this.classes = classes;
+            return this;
+        }
+    
     public Builder ClassAcademic(ClassAcademic value) {
             id = value.getId();
             academicID = value.getAcademicID();
             classID = value.getClassID();
             vanue = value.getVanue();
+            year = value.getYear();
+            classes = value.getClasses();
 
             return this;
         }
@@ -108,6 +137,23 @@ public class ClassAcademic implements Serializable {
     public void setVanue(String vanue) {
         this.vanue = vanue;
     }
+
+    public AcademicYear getYear() {
+        return year;
+    }
+
+    public void setYear(AcademicYear year) {
+        this.year = year;
+    }
+
+    public Class getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Class classes) {
+        this.classes = classes;
+    }
+    
     
 
     @Override
@@ -132,7 +178,7 @@ public class ClassAcademic implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sandisiwe.intergratedproject.domain.ClassAcademic[ id=" + id + " ]";
+        return "com.cput.classattendance.domain.Class[ id=" + id + " ]";
     }
     
 }
