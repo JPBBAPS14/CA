@@ -6,11 +6,14 @@
 
 package com.cput.classattendance;
 
+import com.cput.classattendance.domain.Lecturer;
+import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 /**
  *
@@ -27,6 +30,34 @@ public class LecturerTest {
     // @Test
     // public void hello() {}
 
+    @Test
+    public void testCreation() throws Exception {
+        Lecturer l = new Lecturer
+            .Builder()
+                .email("123leonsmall123@hotmail.com")
+                .name("Leon Small")
+                .officeRoom("8.1")
+                .telephone_no(021123312)
+                .build();
+                
+        Assert.assertEquals(l.getName(), "Leon Small");
+ 
+    }
+
+    @Test
+    public void testUpdate() throws Exception {
+        Lecturer l = new Lecturer
+            .Builder()
+                .email("123leonsmall123@hotmail.com")
+                .name("Leon Big")
+                .officeRoom("8.1")
+                .telephone_no(021123312)
+                .build();
+                
+        Assert.assertEquals(l.getName(), "Leon Big");
+ 
+    }
+    
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
