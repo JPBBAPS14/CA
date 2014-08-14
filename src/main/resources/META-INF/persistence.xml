@@ -5,6 +5,7 @@
     <class>com.cput.classattendance.domain.Exams</class>
     <class>com.cput.classattendance.domain.Lecturer</class>
     <class>com.cput.classattendance.domain.Class</class>
+    <class>com.cput.classattendance.domain.Faculty</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
