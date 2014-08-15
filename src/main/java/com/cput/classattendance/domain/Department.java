@@ -50,9 +50,15 @@ public class Department implements Serializable {
         private String conDetails;
         private int facID;
         
-        public Builder(int value)
+        public Builder()
         {
-            this.deptID = value;            
+                        
+        }
+        
+        public Builder deptID(int value)
+        {
+            this.deptID = value;
+            return this;
         }
         
         public Builder id(Long value)
@@ -93,6 +99,8 @@ public class Department implements Serializable {
         {
             return new Department(this);
         }
+
+        
     }
 	
 
