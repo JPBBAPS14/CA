@@ -20,7 +20,7 @@ import javax.persistence.Temporal;
  * @author 211064084
  */
 @Entity
-public class Class implements Serializable {
+public class ClassDetails implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static long getSerialVersionUID() {
@@ -36,7 +36,7 @@ public class Class implements Serializable {
     @ManyToOne
     private Lecturer lecturerID;
     
-    private Class(Builder builder) {
+    private ClassDetails(Builder builder) {
         id = builder.id;
         startTime = builder.startTime;
         endTime = builder.endTime;
@@ -60,10 +60,10 @@ public class Class implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Class)) {
+        if (!(object instanceof ClassDetails)) {
             return false;
         }
-        Class other = (Class) object;
+        ClassDetails other = (ClassDetails) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -120,15 +120,15 @@ public class Class implements Serializable {
             return this;
         }
 
-        public Builder Class(Class value) {
+        public Builder ClassDetails(ClassDetails value) {
             id = value.getId();
             startTime = value.getStartTime();
             endTime = value.getEndTime();
             return this;
         }
 
-        public Class build() {
-            return new Class(this); 
+        public ClassDetails build() {
+            return new ClassDetails(this); 
         }
 
     }

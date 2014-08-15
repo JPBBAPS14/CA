@@ -39,13 +39,13 @@ public class StudentSubjects implements Serializable {
     private List<Exams> examID;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "class_id")
-    private List<Class> classID;
+    private List<ClassDetails> classID;
 
     private StudentSubjects(Builder builder) {
         id = builder.id;
         subjectID = builder.subjectID;
         examID = builder.examID;
-        classID = builder.classID;
+        //classID = builder.classID;
         studentID = builder.studentID;
     }
 
@@ -86,7 +86,7 @@ public class StudentSubjects implements Serializable {
             studentID = studentSubjects.getStudentID();
             subjectID = studentSubjects.getSubjectID();
             examID = studentSubjects.getExamID();
-            classID = studentSubjects.getClassID();
+           // classID = studentSubjects.getClassID();
             return this;
 
         }
@@ -101,21 +101,23 @@ public class StudentSubjects implements Serializable {
         return id;
     }
 
-    public List<Subjects> getSubjectID() {
-        return subjectID;
-    }
-
     public List<Student> getStudentID() {
         return studentID;
+    }
+
+    public List<Subjects> getSubjectID() {
+        return subjectID;
     }
 
     public List<Exams> getExamID() {
         return examID;
     }
 
-    public List<Class> getClassID() {
+    public List<ClassDetails> getClassID() {
         return classID;
     }
+
+    
 
     @Override
     public int hashCode() {
