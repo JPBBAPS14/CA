@@ -28,38 +28,38 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.cput.classattendance.respository")
 public class ConfConnectionConfig {
-
-    @Bean
-    public BasicDataSource dataSource() {//change to DataSource to BasicDataSource if needed but let me know
-        BasicDataSource ds = new org.apache.commons.dbcp.BasicDataSource();
-        ds.setDriverClassName("org.apache.derby.jdbc.ClientDriver");
-        ds.setUrl("jdbc:derby://localhost:1527/sample");
-        ds.setUsername("app");
-        ds.setPassword("app");
-        return ds;
-    }
-
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-            DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
-        LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
-        lef.setDataSource((javax.sql.DataSource) dataSource);
-        lef.setJpaVendorAdapter(jpaVendorAdapter);
-        lef.setPackagesToScan("com.cput.classattendance.domain");
-        return lef;
-    }
-
-    @Bean
-    public JpaVendorAdapter jpaVendorAdapter() {
-        HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
-        hibernateJpaVendorAdapter.setShowSql(false);
-        hibernateJpaVendorAdapter.setGenerateDdl(true);
-        hibernateJpaVendorAdapter.setDatabase(Database.DERBY);
-        return hibernateJpaVendorAdapter;
-    }
-
-    @Bean
-    public PlatformTransactionManager transactionManager() {
-        return new JpaTransactionManager();
-    }
+//
+//    @Bean
+//    public BasicDataSource dataSource() {//change to DataSource to BasicDataSource if needed but let me know
+//        BasicDataSource ds = new org.apache.commons.dbcp.BasicDataSource();
+//        ds.setDriverClassName("org.apache.derby.jdbc.ClientDriver");
+//        ds.setUrl("jdbc:derby://localhost:1527/sample");
+//        ds.setUsername("app");
+//        ds.setPassword("app");
+//        return ds;
+//    }
+//
+//    @Bean
+//    public LocalContainerEntityManagerFactoryBean entityManagerFactory(
+//            DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
+//        LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
+//        lef.setDataSource((javax.sql.DataSource) dataSource);
+//        lef.setJpaVendorAdapter(jpaVendorAdapter);
+//        lef.setPackagesToScan("com.cput.classattendance.domain");
+//        return lef;
+//    }
+//
+//    @Bean
+//    public JpaVendorAdapter jpaVendorAdapter() {
+//        HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
+//        hibernateJpaVendorAdapter.setShowSql(false);
+//        hibernateJpaVendorAdapter.setGenerateDdl(true);
+//        hibernateJpaVendorAdapter.setDatabase(Database.DERBY);
+//        return hibernateJpaVendorAdapter;
+//    }
+//
+//    @Bean
+//    public PlatformTransactionManager transactionManager() {
+//        return new JpaTransactionManager();
+//    }
 }

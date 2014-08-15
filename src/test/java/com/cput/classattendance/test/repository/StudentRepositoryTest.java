@@ -8,14 +8,16 @@ package com.cput.classattendance.test.repository;
 
 import com.cput.classattendance.domain.Student;
 import com.cput.classattendance.repository.StudentRepository;
-import com.cput.classattendance.test.ConnectionConfigTest;
+import com.cput.classattendance.app.conf.ConfConnectionConfig;
 import java.util.Date;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 /**
  *
@@ -30,7 +32,7 @@ public class StudentRepositoryTest {
     public StudentRepositoryTest() {
     }
 
-     @org.testng.annotations.Test (enabled = true)
+     @Test (enabled = true)
      public void createStudent() {
          repo = ctx.getBean(StudentRepository.class);
          Student s = new Student.Builder("211121614")
@@ -45,7 +47,7 @@ public class StudentRepositoryTest {
          Assert.assertNotNull(s); 
      }
      
-     @org.testng.annotations.Test(dependsOnMethods = "createStudent", enabled = true)
+     @Test(dependsOnMethods = "createStudent", enabled = true)
      public void readStudent(){
          repo = ctx.getBean(StudentRepository.class);
          Student student = repo.findOne(id);
@@ -53,7 +55,7 @@ public class StudentRepositoryTest {
          
      }
      
-    @org.testng.annotations.Test(dependsOnMethods = "readStudent", enabled = true)
+    @Test(dependsOnMethods = "readStudent", enabled = true)
      private void updateStudent(){
          repo = ctx.getBean(StudentRepository.class);
          Student student = repo.findOne(id);
@@ -69,7 +71,7 @@ public class StudentRepositoryTest {
          
      }
      
-     @org.testng.annotations.Test(dependsOnMethods = "updateStudent",enabled = true)
+     @Test(dependsOnMethods = "updateStudent",enabled = true)
      private void deleteStudent(){
          repo = ctx.getBean(StudentRepository.class);
          Student student = repo.findOne(id);
@@ -80,9 +82,9 @@ public class StudentRepositoryTest {
   
      }
 
-    @org.testng.annotations.BeforeClass
+    @BeforeClass
     public static void setUpClass() throws Exception {
-        	 ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
+        	 ctx = new AnnotationConfigApplicationContext(ConfConnectionConfig.class);
 		
     }
     

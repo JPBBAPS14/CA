@@ -6,21 +6,16 @@
 
 package com.cput.classattendance.test.repository;
 
-import com.cput.classattendance.domain.Student;
 import com.cput.classattendance.domain.StudentSubjects;
-import com.cput.classattendance.repository.StudentRepository;
 import com.cput.classattendance.repository.StudentSubjectsRepository;
-import com.cput.classattendance.test.ConnectionConfigTest;
-import java.util.Date;
+import com.cput.classattendance.app.conf.ConfConnectionConfig;
 import org.junit.After;
-import org.junit.AfterClass;
-import static org.junit.Assert.*;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
 
 /**
  *
@@ -49,7 +44,7 @@ public class StudentSubjectsRepositoryTest {
 //         Assert.assertNotNull(s); 
      }
      
-     @org.testng.annotations.Test(dependsOnMethods = "createStudent", enabled = true)
+     @Test(dependsOnMethods = "createStudent", enabled = true)
      public void readStudent(){
          repo = ctx.getBean(StudentSubjectsRepository.class);
          StudentSubjects studentSubjects = repo.findOne(id);
@@ -73,7 +68,7 @@ public class StudentSubjectsRepositoryTest {
          
      }
      
-     @org.testng.annotations.Test(dependsOnMethods = "updateStudent",enabled = true)
+     @Test(dependsOnMethods = "updateStudent",enabled = true)
      private void deleteStudent(){
          repo = ctx.getBean(StudentSubjectsRepository.class);
          StudentSubjects studentSubjects = repo.findOne(id);
@@ -86,7 +81,7 @@ public class StudentSubjectsRepositoryTest {
 
     @org.testng.annotations.BeforeClass
     public static void setUpClass() throws Exception {
-        	 ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
+        	 ctx = new AnnotationConfigApplicationContext(ConfConnectionConfig.class);
 		
     }
     

@@ -8,17 +8,15 @@ package com.cput.classattendance.test.repository;
 
 import com.cput.classattendance.domain.Subjects;
 import com.cput.classattendance.repository.SubjectsRepository;
-import com.cput.classattendance.test.ConnectionConfigTest;
-import java.util.Date;
+import com.cput.classattendance.app.conf.ConfConnectionConfig;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 /**
  *
@@ -34,7 +32,7 @@ public class SubjectsRepositoryTest {
     public SubjectsRepositoryTest() {
     }
 
-     @org.testng.annotations.Test (enabled = true)
+     @Test (enabled = true)
      public void createSubjects() {
          repo = ctx.getBean(SubjectsRepository.class);
          Subjects s = new Subjects.Builder("DOS300S")
@@ -48,7 +46,7 @@ public class SubjectsRepositoryTest {
          Assert.assertNotNull(s); 
      }
      
-     @org.testng.annotations.Test(dependsOnMethods = "createSubjects", enabled = true)
+     @Test(dependsOnMethods = "createSubjects", enabled = true)
      public void readSubjects(){
          repo = ctx.getBean(SubjectsRepository.class);
          Subjects subjects = repo.findOne(id);
@@ -56,7 +54,7 @@ public class SubjectsRepositoryTest {
          
      }
      
-    @org.testng.annotations.Test(dependsOnMethods = "readSubjects", enabled = true)
+    @Test(dependsOnMethods = "readSubjects", enabled = true)
      private void updateSubjects(){
          repo = ctx.getBean(SubjectsRepository.class);
          Subjects subjects = repo.findOne(id);
@@ -72,7 +70,7 @@ public class SubjectsRepositoryTest {
          
      }
      
-     @org.testng.annotations.Test(dependsOnMethods = "updateSubjects",enabled = true)
+     @Test(dependsOnMethods = "updateSubjects",enabled = true)
      private void deleteSubjects(){
          repo = ctx.getBean(SubjectsRepository.class);
          Subjects subjects = repo.findOne(id);
@@ -83,9 +81,9 @@ public class SubjectsRepositoryTest {
   
      }
 
-    @org.testng.annotations.BeforeClass
+    @BeforeClass
     public static void setUpClass() throws Exception {
-        	 ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
+        	 ctx = new AnnotationConfigApplicationContext(ConfConnectionConfig.class);
 		
     }
     
