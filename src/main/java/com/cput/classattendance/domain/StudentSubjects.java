@@ -45,8 +45,11 @@ public class StudentSubjects implements Serializable {
         id = builder.id;
         subjectID = builder.subjectID;
         examID = builder.examID;
-        //classID = builder.classID;
+        classID = builder.classID;
         studentID = builder.studentID;
+    }
+    
+    private StudentSubjects() {
     }
 
     public static class Builder {
@@ -55,7 +58,7 @@ public class StudentSubjects implements Serializable {
         private List<Student> studentID;
         private List<Subjects> subjectID;
         private List<Exams> examID;
-        private List<Class> classID;
+        private List<ClassDetails> classID;
 
         public Builder(List<Student> studentID) {
             this.studentID = studentID;
@@ -76,7 +79,7 @@ public class StudentSubjects implements Serializable {
             return this;
         }
 
-        public Builder ClassID(List<Class> value) {
+        public Builder ClassID(List<ClassDetails> value) {
             classID = value;
             return this;
         }
@@ -86,7 +89,7 @@ public class StudentSubjects implements Serializable {
             studentID = studentSubjects.getStudentID();
             subjectID = studentSubjects.getSubjectID();
             examID = studentSubjects.getExamID();
-           // classID = studentSubjects.getClassID();
+            classID = studentSubjects.getClassID();
             return this;
 
         }

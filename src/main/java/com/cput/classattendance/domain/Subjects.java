@@ -35,6 +35,9 @@ public class Subjects implements Serializable {
         co_ordenator = builder.co_ordenator;
         courseID = builder.courseID;
        }
+    
+    private Subjects() {
+       }
     public static class Builder {
 
         private Long id;

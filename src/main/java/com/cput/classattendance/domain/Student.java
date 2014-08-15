@@ -40,6 +40,10 @@ public class Student implements Serializable {
     DOB = builder.DOB;
     StudentID = builder.StudentID;
        }
+    
+    private Student() {
+       }
+    
     public static class Builder {
 
         private Long id;
