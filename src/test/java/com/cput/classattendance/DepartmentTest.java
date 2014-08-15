@@ -6,9 +6,8 @@
 
 package com.cput.classattendance;
 
-import com.cput.classattendance.domain.Lecturer;
+import com.cput.classattendance.domain.Department;
 import org.testng.Assert;
-import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -17,45 +16,42 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author Jean-Paul
+ * @author 209215178
  */
-public class LecturerTest {
+public class DepartmentTest {
     
-    public LecturerTest() {
+    public DepartmentTest() {
     }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    // @Test
-    // public void hello() {}
-
-    @Test
-    public void testCreation() throws Exception {
-        Lecturer l = new Lecturer
-            .Builder()
-                .email("123leonsmall123@hotmail.com")
-                .name("Leon Small")
-                .officeRoom("8.1")
-                .telephone_no(021123312)
-                .build();
+    @Test    
+    public void testCreation() throws Exception
+    {
+        Department dep = new Department
+                .Builder()
+                    .deptID(111) 
+                    .name("ND: Information Technology")
+                    .conDetails("Tel: +27 21 460 3911")
+                    .facID(111)
+                    .build();
                 
-        Assert.assertEquals(l.getName(), "Leon Small");
- 
+        Assert.assertEquals(dep.getName(),"ND: Information Technology");
     }
-
-    @Test
-    public void testUpdate() throws Exception {
-        Lecturer l = new Lecturer
-            .Builder()
-                .email("123leonsmall123@hotmail.com")
-                .name("Leon Big")
-                .officeRoom("8.1")
-                .telephone_no(021123312)
-                .build();
+    
+    @Test    
+    public void testUpdate() throws Exception
+    {
+        Department dep = new Department
+                .Builder()
+                    .deptID(111) 
+                    .name("ND: Information Technology")
+                    .conDetails("Tel: +27 21 460 3910")
+                    .facID(111)
+                    .build();
                 
-        Assert.assertEquals(l.getName(), "Leon Big");
- 
+        Assert.assertEquals(dep.getContactDetails(),"Tel: +27 21 460 3910");
     }
     
     @BeforeClass

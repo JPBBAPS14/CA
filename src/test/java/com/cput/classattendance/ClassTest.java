@@ -39,7 +39,7 @@ public class ClassTest {
         String classEnd = "2014-08-14 11:30:00.0";
         ClassDetails c = new ClassDetails
                 .Builder()
-                .endTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
+                .startTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
                 .endTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classEnd))
                 .build();
                 
@@ -53,7 +53,7 @@ public class ClassTest {
         String classEnd = "2014-08-14 10:00:00.0";
         ClassDetails c = new ClassDetails
                 .Builder()
-                .endTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
+                .startTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
                 .endTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classEnd))
                 .build();
         

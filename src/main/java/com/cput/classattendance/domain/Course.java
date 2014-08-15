@@ -23,7 +23,7 @@ public class Course implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     
     private Long ID;
-    private Long CourseID;
+    private int CourseID;
     private String Name;
     private String Type;
     private int Term;
@@ -46,15 +46,21 @@ public class Course implements Serializable {
     public static class Builder
     {
         private Long id;
-        private Long courseID;
+        private int courseID;
         private String name;
         private String type;
         private int term;
         private int deptID;
         
-        public Builder(Long id)
+        public Builder()
         {
-            this.courseID = id;
+            
+        }
+        
+        public Builder CourseID(int value)
+        {
+            this.courseID = value;
+            return this;
         }
 
         public Builder Name(String value)
@@ -108,11 +114,11 @@ public class Course implements Serializable {
         this.ID = id;
     } 
         
-    public Long getCourseID() {
+    public int getCourseID() {
         return CourseID;
     }
 
-    public void setCourseID(Long CourseID) {
+    public void setCourseID(int CourseID) {
         this.CourseID = CourseID;
     }
 
@@ -153,7 +159,7 @@ public class Course implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (CourseID != null ? CourseID.hashCode() : 0);
+        hash += (ID != null ? ID.hashCode() : 0);
         return hash;
     }
 
@@ -164,7 +170,7 @@ public class Course implements Serializable {
             return false;
         }
         Course other = (Course) object;
-        if ((this.CourseID == null && other.CourseID != null) || (this.CourseID != null && !this.CourseID.equals(other.CourseID))) {
+        if ((this.ID == null && other.ID != null) || (this.ID != null && !this.ID.equals(other.ID))) {
             return false;
         }
         return true;
@@ -172,7 +178,7 @@ public class Course implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cput.classattendance.domain.Course[ id=" + CourseID + " ]";
+        return "com.cput.classattendance.domain.Course[ id=" + ID + " ]";
     }
     
 }
