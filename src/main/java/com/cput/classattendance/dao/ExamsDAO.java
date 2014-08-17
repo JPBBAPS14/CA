@@ -17,6 +17,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public interface ExamsDAO extends Services<Exams, Long>{
+    
+    public void create();
+    
     public List<Exams> getAllRecords();
     
     public Exams getRecord(Long id);
@@ -24,6 +27,6 @@ public interface ExamsDAO extends Services<Exams, Long>{
     public void updateRecord(Long old, Exams updated);
     
     public void deleteRecord(Exams s);
-
+    
     public List<Exams> findAll();
 }

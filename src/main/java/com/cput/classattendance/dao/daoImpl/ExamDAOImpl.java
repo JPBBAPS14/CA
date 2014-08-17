@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.cput.classattendance.dao.daoImpl;
 
 import com.cput.classattendance.dao.ExamsDAO;
@@ -18,16 +17,15 @@ import org.springframework.stereotype.Service;
  *
  * @author 211064084
  */
-
 @Service //if it doesnt work without @service then uncomment it ok
-public class ExamDAOImpl implements ExamsDAO{
-    
+public class ExamDAOImpl implements ExamsDAO {
+
     @Autowired
     private ExamsRepository examsRepository;
-    
+
     public static ApplicationContext ctx;
     private Long id;
-    
+
     @Override
     public List<Exams> getAllRecords() {
         return examsRepository.findAll();
@@ -40,13 +38,12 @@ public class ExamDAOImpl implements ExamsDAO{
 
     @Override
     public void updateRecord(Long old, Exams updated) {
-        //id = old;
+        id = old;
         examsRepository = ctx.getBean(ExamsRepository.class);
         Exams eOld = examsRepository.findOne(old);
-        //Exams updatedExam = updated;
+        Exams updatedExam = updated;
         eOld = updated;
         examsRepository.save(eOld);
-
     }
 
     @Override
@@ -67,7 +64,7 @@ public class ExamDAOImpl implements ExamsDAO{
     @Override
     public Exams persist(Exams entity) {
         return examsRepository.save(entity);
-        }
+    }
 
     @Override
     public Exams merge(Exams entity) {
@@ -79,8 +76,9 @@ public class ExamDAOImpl implements ExamsDAO{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public void create() {
     
+    }
 
-   
-    
 }
