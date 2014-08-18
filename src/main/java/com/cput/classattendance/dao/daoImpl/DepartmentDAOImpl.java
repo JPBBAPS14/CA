@@ -66,7 +66,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 
     @Override
     public Department merge(Department entity) {
-        if (entity.getId() != null) {
+        if (entity.getID() != null) {
             return departmentRepository.save(entity);
         }
         return null;

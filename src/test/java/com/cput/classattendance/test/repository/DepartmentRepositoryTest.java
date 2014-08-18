@@ -47,7 +47,7 @@ public class DepartmentRepositoryTest {
                  .build();
          
          repo.save(d);
-         id = d.getId();
+         id = d.getID();
          System.out.println(id);
          Assert.assertNotNull(d);
      }
