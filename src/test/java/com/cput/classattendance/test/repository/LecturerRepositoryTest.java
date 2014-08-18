@@ -5,13 +5,12 @@
  */
 package com.cput.classattendance.test.repository;
 
-import com.cput.classattendance.app.conf.ConfConnectionConfig;
 import com.cput.classattendance.domain.Lecturer;
 import com.cput.classattendance.repository.LecturerRepository;
+import com.cput.classattendance.test.ConnectionConfigTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
-import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -87,7 +86,7 @@ public class LecturerRepositoryTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new AnnotationConfigApplicationContext(ConfConnectionConfig.class);
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
 
     }
 

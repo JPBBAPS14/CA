@@ -8,6 +8,7 @@ package com.cput.classattendance.test.repository;
 import com.cput.classattendance.app.conf.ConfConnectionConfig;
 import com.cput.classattendance.domain.ClassDetails;
 import com.cput.classattendance.repository.ClassDetailsRepository;
+import com.cput.classattendance.test.ConnectionConfigTest;
 import static com.cput.classattendance.test.repository.ClassDetailsRepositoryTest.ctx;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -95,7 +96,7 @@ public class ClassDetailsRepositoryTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new AnnotationConfigApplicationContext(ConfConnectionConfig.class);
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
 
     }
 

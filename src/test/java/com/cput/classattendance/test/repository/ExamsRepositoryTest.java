@@ -9,6 +9,7 @@ import com.cput.classattendance.app.conf.ConfConnectionConfig;
 import com.cput.classattendance.domain.Exams;
 import com.cput.classattendance.repository.ExamsRepository;
 import com.cput.classattendance.repository.StudentRepository;
+import com.cput.classattendance.test.ConnectionConfigTest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import org.springframework.context.ApplicationContext;
@@ -105,7 +106,7 @@ public class ExamsRepositoryTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ctx = new AnnotationConfigApplicationContext(ConfConnectionConfig.class);
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
 
     }
 

@@ -33,6 +33,10 @@ public class Subjects implements Serializable {
     @JoinColumn(name = "subject_id")
     private StudentSubjects studentSubjects;
     
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
+    
     private Subjects(Builder builder) {
         id = builder.id;
         subjectID = builder.subjectID;
@@ -43,6 +47,7 @@ public class Subjects implements Serializable {
     
     private Subjects() {
        }
+
     public static class Builder {
 
         private Long id;
@@ -96,6 +101,10 @@ public class Subjects implements Serializable {
     
     public Long getId() {
         return id;
+    }
+    
+    public Course getCourse() {
+        return course;
     }
 
     public String getSubjectID() {

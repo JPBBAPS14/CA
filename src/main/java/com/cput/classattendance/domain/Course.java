@@ -7,10 +7,13 @@
 package com.cput.classattendance.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -28,6 +31,8 @@ public class Course implements Serializable {
     private String Type;
     private int Term;
     private int DepartmentID;
+    @OneToMany(targetEntity=Subjects.class, mappedBy="course", fetch=FetchType.EAGER)
+    private List<Subjects> subjects;
     
     private Course(Builder builder)
 	{
@@ -104,6 +109,10 @@ public class Course implements Serializable {
         }
 
        
+    }
+    
+    public List<Subjects> getSubjects() {
+        return subjects;
     }
 
     public Long getId() {

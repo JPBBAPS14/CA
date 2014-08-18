@@ -8,8 +8,10 @@ package com.cput.classattendance.test.repository;
 
 import com.cput.classattendance.domain.Faculty;
 import com.cput.classattendance.repository.FacultyRepository;
-import org.testng.Assert;
+import com.cput.classattendance.test.ConnectionConfigTest;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -69,6 +71,7 @@ public class FacultyRepositoryTest {
      }
     @BeforeClass
     public static void setUpClass() throws Exception {
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
     }
 
     @AfterClass

@@ -8,9 +8,12 @@ package com.cput.classattendance.test.repository;
 
 import com.cput.classattendance.domain.Department;
 import com.cput.classattendance.repository.DepartmentRepository;
+import com.cput.classattendance.test.ConnectionConfigTest;
+import static com.cput.classattendance.test.repository.StudentSubjectsRepositoryTest.ctx;
 import static org.eclipse.persistence.jpa.jpql.JPAVersion.value;
 import org.junit.Assert;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -90,6 +93,7 @@ public class DepartmentRepositoryTest {
              
     @BeforeClass
     public static void setUpClass() throws Exception {
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
     }
 
     @AfterClass
