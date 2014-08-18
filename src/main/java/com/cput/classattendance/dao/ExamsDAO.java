@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ExamsDAO extends Services<Exams, Long>{
     
-    public void create();
+    public void create(Exams s);
     
     public List<Exams> getAllRecords();
     

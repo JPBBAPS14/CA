@@ -20,6 +20,10 @@ import javax.persistence.Id;
 @Entity
 public class Faculty implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;

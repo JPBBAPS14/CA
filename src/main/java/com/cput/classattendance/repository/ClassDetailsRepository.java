@@ -6,12 +6,13 @@
 
 package com.cput.classattendance.repository;
 
+import com.cput.classattendance.domain.ClassDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author 211064084
  */
-public interface ClassRepository extends JpaRepository<Class, Long>{
+public interface ClassDetailsRepository extends JpaRepository<ClassDetails, Long>{
     
 }

@@ -68,17 +68,20 @@ public class ExamDAOImpl implements ExamsDAO {
 
     @Override
     public Exams merge(Exams entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (entity.getId() != null) {
+            return examsRepository.save(entity);
+        }
+        return null;
     }
 
     @Override
     public void remove(Exams entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        examsRepository.delete(entity);
     }
 
     @Override
-    public void create() {
-    
+    public void create(Exams s) {
+
     }
 
 }

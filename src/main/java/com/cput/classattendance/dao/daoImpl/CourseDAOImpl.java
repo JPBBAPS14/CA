@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.cput.classattendance.dao.daoImpl;
 
 import com.cput.classattendance.dao.CourseDAO;
@@ -67,17 +66,20 @@ public class CourseDAOImpl implements CourseDAO {
 
     @Override
     public Course merge(Course entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (entity.getId() != null) {
+            return courseRepository.save(entity);
+        }
+        return null;
     }
 
     @Override
     public void remove(Course entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        courseRepository.delete(entity);
     }
 
     @Override
     public void create() {
-    
+
     }
-    
+
 }

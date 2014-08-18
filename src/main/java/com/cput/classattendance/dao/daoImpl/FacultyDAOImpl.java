@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.cput.classattendance.dao.daoImpl;
 
 import com.cput.classattendance.dao.FacultyDAO;
@@ -69,17 +68,20 @@ public class FacultyDAOImpl implements FacultyDAO {
 
     @Override
     public Faculty merge(Faculty entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (entity.getID() != null) {
+            return facultyRepository.save(entity);
+        }
+        return null;
     }
 
     @Override
     public void remove(Faculty entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        facultyRepository.delete(entity);
     }
 
     @Override
     public void create() {
-    
+
     }
-    
+
 }
