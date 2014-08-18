@@ -7,14 +7,12 @@
 package com.cput.classattendance.domain;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -29,8 +27,9 @@ public class Department implements Serializable {
     private int DepartmentID;
     private String Name;
     private String ContactDetails;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "FacultyID")
+    @ManyToOne
+    @JoinColumn(name = "Faculty_ID")
+    private Faculty faculty;
     private int FacultyID;
     
     private Department(Builder builder)
@@ -87,7 +86,7 @@ public class Department implements Serializable {
         
         public Builder Department(Department value)
         {
-            id = value.getId();
+            id = value.getID();
             deptID = value.getDepartmentID();
             name = value.getName();
             conDetails = value.getContactDetails();
@@ -104,6 +103,14 @@ public class Department implements Serializable {
     }
 	
 
+      public Long getID() {
+        return ID;
+    }
+
+    public Faculty getFaculty() {
+        return faculty;
+    }
+    
     public int getDepartmentID() {
         return DepartmentID;
     }
@@ -134,10 +141,6 @@ public class Department implements Serializable {
 
     public void setFacultyID(int FacultyID) {
         this.FacultyID = FacultyID;
-    }
-
-    public Long getId() {
-        return ID;
     }
 
     public void setId(Long ID) {

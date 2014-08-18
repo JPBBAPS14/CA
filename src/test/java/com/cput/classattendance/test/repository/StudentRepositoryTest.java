@@ -6,14 +6,13 @@
 
 package com.cput.classattendance.test.repository;
 
-import com.cput.classattendance.app.conf.ConfConnectionConfig;
+import com.cput.classattendance.test.ConnectionConfigTest;
 import com.cput.classattendance.domain.Student;
 import com.cput.classattendance.repository.StudentRepository;
 import java.util.Date;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
-import static org.testng.Assert.fail;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -86,21 +85,20 @@ public class StudentRepositoryTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        
-        ctx = new AnnotationConfigApplicationContext(ConfConnectionConfig.class);
-		
+        ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
+
     }
-    
+
     @AfterClass
-    public static void tearDownClass() {
+    public static void tearDownClass() throws Exception {
     }
-    
+
     @BeforeMethod
-    public void setUpMethod() {
+    public void setUpMethod() throws Exception {
     }
-    
+
     @AfterMethod
-    public void tearDownMethod() {
+    public void tearDownMethod() throws Exception {
     }
 
 }

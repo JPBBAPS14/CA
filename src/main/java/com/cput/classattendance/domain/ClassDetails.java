@@ -8,11 +8,15 @@ package com.cput.classattendance.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -34,7 +38,13 @@ public class ClassDetails implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date endTime;
     @ManyToOne
+    @JoinColumn(name = "class_id",insertable = false, updatable = false)
     private Lecturer lecturerID;
+    @OneToMany(targetEntity=StudentSubjects.class, mappedBy="examID", fetch=FetchType.EAGER)
+    private List<StudentSubjects> studentSubjects;
+    @ManyToOne
+    @JoinColumn(name = "class_id",insertable = false, updatable = false)
+    private ClassAcademic classAcademic;
     
     private ClassDetails(Builder builder) {
         id = builder.id;
@@ -93,6 +103,14 @@ public class ClassDetails implements Serializable {
 
     public Lecturer getLecturerID() {
         return lecturerID;
+    }
+
+    public List<StudentSubjects> getStudentSubjects() {
+        return studentSubjects;
+    }
+
+    public ClassAcademic getClassAcademic() {
+        return classAcademic;
     }
     
      public static class Builder {

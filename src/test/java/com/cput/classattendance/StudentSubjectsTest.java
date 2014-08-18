@@ -87,15 +87,15 @@ public class StudentSubjectsTest {
 //        Assert.assertEquals(s.getStudentID(), stu);
 // 
 //    }
-
-    @Test
-    public void testUpdate() throws Exception {
-        StudentSubjects s = new StudentSubjects.Builder(null)
-                .ClassID(null)
-                 .build();
-        Assert.assertEquals(s.getClassID(), "else where");
- 
-    }
+//
+//    @Test
+//    public void testUpdate() throws Exception {
+//        StudentSubjects s = new StudentSubjects.Builder(null)
+//                .ClassID(null)
+//                 .build();
+//        Assert.assertEquals(s.getClassID(), "else where");
+// 
+//    }
     @BeforeClass
     public static void setUpClass() throws Exception {
     }

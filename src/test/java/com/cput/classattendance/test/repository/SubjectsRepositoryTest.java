@@ -8,7 +8,7 @@ package com.cput.classattendance.test.repository;
 
 import com.cput.classattendance.domain.Subjects;
 import com.cput.classattendance.repository.SubjectsRepository;
-import com.cput.classattendance.app.conf.ConfConnectionConfig;
+import com.cput.classattendance.test.ConnectionConfigTest;
 import org.junit.After;
 import org.junit.Before;
 import org.springframework.context.ApplicationContext;
@@ -83,7 +83,7 @@ public class SubjectsRepositoryTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        	 ctx = new AnnotationConfigApplicationContext(ConfConnectionConfig.class);
+        	 ctx = new AnnotationConfigApplicationContext(ConnectionConfigTest.class);
 		
     }
     

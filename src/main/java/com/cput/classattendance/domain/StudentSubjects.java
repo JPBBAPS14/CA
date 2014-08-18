@@ -7,13 +7,13 @@ package com.cput.classattendance.domain;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -26,20 +26,19 @@ public class StudentSubjects implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "student_id")
+    
+    @OneToMany(targetEntity=Student.class, mappedBy="studentSubjects", fetch=FetchType.EAGER)
     private List<Student> studentID;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "subject_id")
+    
+    @OneToMany(targetEntity=Subjects.class, mappedBy="studentSubjects", fetch=FetchType.EAGER)
     private List<Subjects> subjectID;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "exam_id")
+    
+    @OneToMany(targetEntity=Exams.class, mappedBy="studentSubjects", fetch=FetchType.EAGER)
     private List<Exams> examID;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "class_id")
-    private List<ClassDetails> classID;
+    private ClassDetails classID;
 
     private StudentSubjects(Builder builder) {
         id = builder.id;
@@ -58,7 +57,7 @@ public class StudentSubjects implements Serializable {
         private List<Student> studentID;
         private List<Subjects> subjectID;
         private List<Exams> examID;
-        private List<ClassDetails> classID;
+        private ClassDetails classID;
 
         public Builder(List<Student> studentID) {
             this.studentID = studentID;
@@ -79,7 +78,7 @@ public class StudentSubjects implements Serializable {
             return this;
         }
 
-        public Builder ClassID(List<ClassDetails> value) {
+        public Builder ClassID(ClassDetails value) {
             classID = value;
             return this;
         }
@@ -116,7 +115,7 @@ public class StudentSubjects implements Serializable {
         return examID;
     }
 
-    public List<ClassDetails> getClassID() {
+    public ClassDetails getClassID() {
         return classID;
     }
 

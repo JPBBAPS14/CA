@@ -6,12 +6,14 @@
 
 package com.cput.classattendance.domain;
 
-import com.cput.classattendance.domain.ClassDetails.Builder;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -25,6 +27,8 @@ public class Faculty implements Serializable {
     private Long ID;
     private int FacultyID;
     private String Name;
+    @OneToMany(targetEntity=Department.class, mappedBy="faculty", fetch=FetchType.EAGER)
+    private List<Department> department;
     
     private Faculty(Builder builder)
 	{
@@ -96,7 +100,9 @@ public class Faculty implements Serializable {
     	return Name;
     }
     
-    
+    public List<Department> getDepartment() {
+        return department;
+    }
    
     
      @Override

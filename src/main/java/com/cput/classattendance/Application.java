@@ -4,14 +4,12 @@
  * and open the template in the editor.
  */
 
-package com.cput.classattendance.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
+package com.cput.classattendance;
 
 /**
  *
- * @author 211064084
+ * @author Aidem
  */
-public interface ClassRepository extends JpaRepository<Class, Long>{
+public interface Application {
     
 }
