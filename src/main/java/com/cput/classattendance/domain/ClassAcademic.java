@@ -7,15 +7,13 @@
 package com.cput.classattendance.domain;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 
 /**
@@ -31,22 +29,19 @@ public class ClassAcademic implements Serializable {
     private String academicID;
     private String classID;
     private String vanue;
+    @OneToMany(targetEntity=AcademicYear.class, mappedBy="classAcademic", fetch=FetchType.EAGER)
+    private List<AcademicYear> academicYear;
     
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "academicID")
-    private AcademicYear year;
-    
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "classID")
-    private ClassDetails classes;
+   @OneToMany(targetEntity=ClassDetails.class, mappedBy="classAcademic", fetch=FetchType.EAGER)
+    private List<ClassDetails> classDetails;
     
     private ClassAcademic(Builder builder) {
         this.id = builder.id;
         this.academicID = builder.academicID;
         this.classID = builder.classID;
         this.vanue = builder.vanue;
-        this.year = builder.year;
-        this.classes = builder.classes;
+        this.academicYear = builder.academicYear;
+        this.classDetails = builder.classDetails;
     }
 
     private ClassAcademic() {
@@ -58,8 +53,8 @@ public class ClassAcademic implements Serializable {
     private String academicID;
     private String classID;
     private String vanue;
-    private AcademicYear year;
-    private ClassDetails classes;
+    private List<AcademicYear> academicYear;
+    private List<ClassDetails> classDetails;
     
     public Builder(String academicID) {
             this.academicID = academicID;
@@ -79,13 +74,13 @@ public class ClassAcademic implements Serializable {
             return this;
         }
     
-     public Builder AcademicYears(AcademicYear year) {
-            this.year = year;
+     public Builder AcademicYears(List<AcademicYear> academicYear) {
+            this.academicYear = academicYear;
             return this;
         }
      
-      public Builder Classes(ClassDetails classes) {
-            this.classes = classes;
+      public Builder Classes(List<ClassDetails> classDetails) {
+            this.classDetails = classDetails;
             return this;
         }
     
@@ -94,8 +89,8 @@ public class ClassAcademic implements Serializable {
             academicID = value.getAcademicID();
             classID = value.getClassID();
             vanue = value.getVanue();
-            year = value.getYear();
-            classes = value.getClasses();
+            academicYear = value.getYear();
+            classDetails = value.getClasses();
 
             return this;
         }
@@ -110,49 +105,27 @@ public class ClassAcademic implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getAcademicID() {
         return academicID;
-    }
-
-    public void setAcademicID(String academicID) {
-        this.academicID = academicID;
     }
 
     public String getClassID() {
         return classID;
     }
 
-    public void setClassID(String classID) {
-        this.classID = classID;
-    }
-
     public String getVanue() {
         return vanue;
     }
 
-    public void setVanue(String vanue) {
-        this.vanue = vanue;
+    public List<AcademicYear> getYear() {
+        return academicYear;
     }
 
-    public AcademicYear getYear() {
-        return year;
+
+    public List<ClassDetails> getClasses() {
+        return classDetails;
     }
 
-    public void setYear(AcademicYear year) {
-        this.year = year;
-    }
-
-    public ClassDetails getClasses() {
-        return classes;
-    }
-
-    public void setClasses(ClassDetails classes) {
-        this.classes = classes;
-    }
     
     
 

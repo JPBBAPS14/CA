@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -31,6 +33,9 @@ public class Student implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date DOB;
     private String StudentID;
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private StudentSubjects studentSubjects;
     
     private Student(Builder builder) {
     id = builder.id;
@@ -40,6 +45,12 @@ public class Student implements Serializable {
     DOB = builder.DOB;
     StudentID = builder.StudentID;
        }
+    
+    private Student() {
+       }
+
+   
+    
     public static class Builder {
 
         private Long id;
@@ -119,7 +130,10 @@ public class Student implements Serializable {
     public String getStudentID() {
         return StudentID;
     }
-
+    
+    public StudentSubjects getStudentSubjects() {
+        return studentSubjects;
+    }
     
 
     @Override

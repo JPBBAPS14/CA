@@ -8,6 +8,7 @@ package com.cput.classattendance.domain;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class Lecturer implements Serializable {
     private String officeRoom;
     private long telephone_no;
     private String email;
-    @OneToMany
+    @OneToMany(targetEntity=ClassDetails.class, mappedBy="lecturerID", fetch=FetchType.EAGER)
     private List<ClassDetails> classId;
     
     private Lecturer(Builder builder) {

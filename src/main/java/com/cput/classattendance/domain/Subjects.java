@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -27,6 +29,13 @@ public class Subjects implements Serializable {
     private String name;
     private String co_ordenator;
     private String courseID;
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private StudentSubjects studentSubjects;
+    
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
     
     private Subjects(Builder builder) {
         id = builder.id;
@@ -35,6 +44,10 @@ public class Subjects implements Serializable {
         co_ordenator = builder.co_ordenator;
         courseID = builder.courseID;
        }
+    
+    private Subjects() {
+       }
+
     public static class Builder {
 
         private Long id;
@@ -69,7 +82,7 @@ public class Subjects implements Serializable {
         
 
        
-        public Builder Sujects(Subjects student){
+        public Builder Subjects(Subjects student){
             id = student.getId();
             subjectID = student.getSubjectID();
             name = student.getName();
@@ -89,6 +102,10 @@ public class Subjects implements Serializable {
     public Long getId() {
         return id;
     }
+    
+    public Course getCourse() {
+        return course;
+    }
 
     public String getSubjectID() {
         return subjectID;
@@ -106,7 +123,9 @@ public class Subjects implements Serializable {
         return courseID;
     }
     
-    
+     public StudentSubjects getStudentSubjects() {
+        return studentSubjects;
+    }
 
     @Override
     public int hashCode() {

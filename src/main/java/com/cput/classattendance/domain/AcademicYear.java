@@ -7,10 +7,7 @@
 package com.cput.classattendance.domain;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,8 +26,8 @@ public class AcademicYear implements Serializable {
     private Long id;
     private String academicID;
     
-   @ManyToOne (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-   @JoinColumn (name = "academicID")
+   @ManyToOne
+   @JoinColumn(name = "academic_ID")
     private ClassAcademic classAcademic;
     
      private AcademicYear(Builder builder) {
@@ -82,27 +79,13 @@ public class AcademicYear implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getAcademicID() {
         return academicID;
     }
 
-    public void setAcademicID(String academicID) {
-        this.academicID = academicID;
-    }
-
     public ClassAcademic getClassAcademic() {
         return classAcademic;
-    }
-
-    public void setClassAcademic(ClassAcademic classAcademic) {
-        this.classAcademic = classAcademic;
-    }
-    
-    
+    }     
 
     @Override
     public int hashCode() {

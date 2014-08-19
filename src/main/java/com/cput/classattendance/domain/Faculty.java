@@ -6,12 +6,14 @@
 
 package com.cput.classattendance.domain;
 
-import com.cput.classattendance.domain.ClassDetails.Builder;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -20,11 +22,17 @@ import javax.persistence.Id;
 @Entity
 public class Faculty implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
-    private Long FacultyID;
+    private int FacultyID;
     private String Name;
+    @OneToMany(targetEntity=Department.class, mappedBy="faculty", fetch=FetchType.EAGER)
+    private List<Department> department;
     
     private Faculty(Builder builder)
 	{
@@ -36,18 +44,24 @@ public class Faculty implements Serializable {
     public static class Builder 
     {
         private Long id;
-        private Long facID;
+        private int facID;
         private String name;
         
-        public Builder(Long value)
+        public Builder()
         {
-            this.facID = value;
+           
         }
         
         
         public Builder ID(Long value)
         {
             this.id = value;
+            return this;
+        }
+        
+        public Builder FacultyID(int value)
+        {
+            this.facID = value;
             return this;
         }
 
@@ -80,7 +94,7 @@ public class Faculty implements Serializable {
         this.ID = ID;
     }
    
-    public Long getFacultyID()
+    public int getFacultyID()
     {
     	return FacultyID;
     }
@@ -90,13 +104,15 @@ public class Faculty implements Serializable {
     	return Name;
     }
     
-    
+    public List<Department> getDepartment() {
+        return department;
+    }
    
     
      @Override
     public int hashCode() {
         int hash = 0;
-        hash += (FacultyID != null ? FacultyID.hashCode() : 0);
+        hash += (ID != null ? ID.hashCode() : 0);
         return hash;
     }
     
@@ -107,7 +123,7 @@ public class Faculty implements Serializable {
             return false;
         }
         Faculty other = (Faculty) object;
-        if ((this.FacultyID == null && other.FacultyID != null) || (this.FacultyID != null && !this.FacultyID.equals(other.FacultyID))) {
+        if ((this.ID == null && other.ID != null) || (this.ID != null && !this.ID.equals(other.ID))) {
             return false;
         }
         return true;
@@ -115,7 +131,7 @@ public class Faculty implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cput.classattendance.domain.Faculty[ id=" + FacultyID + " ]";
+        return "com.cput.classattendance.domain.Faculty[ id=" + ID + " ]";
     }
     
 }

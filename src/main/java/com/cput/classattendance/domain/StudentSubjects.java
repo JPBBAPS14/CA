@@ -3,18 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.cput.classattendance.domain;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -23,65 +22,105 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class StudentSubjects implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    
     private Long id;
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "student_id")
+    
+    @OneToMany(targetEntity=Student.class, mappedBy="studentSubjects", fetch=FetchType.EAGER)
     private List<Student> studentID;
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "subject_id")
+    
+    @OneToMany(targetEntity=Subjects.class, mappedBy="studentSubjects", fetch=FetchType.EAGER)
     private List<Subjects> subjectID;
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "exam_id")
+    
+    @OneToMany(targetEntity=Exams.class, mappedBy="studentSubjects", fetch=FetchType.EAGER)
     private List<Exams> examID;
-    
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "class_id")
-    private List<ClassDetails> classID;
+    private ClassDetails classID;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setSubjectID(List<Subjects> subjectID) {
-        this.subjectID = subjectID;
-    }
-
-    public void setStudentID(List<Student> studentID) {
-        this.studentID = studentID;
-    }
-
-    public void setExamID(List<Exams> examID) {
-        this.examID = examID;
+    private StudentSubjects(Builder builder) {
+        id = builder.id;
+        subjectID = builder.subjectID;
+        examID = builder.examID;
+        classID = builder.classID;
+        studentID = builder.studentID;
     }
     
-    public void setClassID(List<ClassDetails> classID) {
-        this.classID = classID;
+    private StudentSubjects() {
     }
-    
+
+    public static class Builder {
+
+        private Long id;
+        private List<Student> studentID;
+        private List<Subjects> subjectID;
+        private List<Exams> examID;
+        private ClassDetails classID;
+
+        public Builder(List<Student> studentID) {
+            this.studentID = studentID;
+        }
+
+        public Builder setId(Long value) {
+            id = value;
+            return this;
+        }
+
+        public Builder SubjectID(List<Subjects> value) {
+            subjectID = value;
+            return this;
+        }
+
+        public Builder ExamID(List<Exams> value) {
+            examID = value;
+            return this;
+        }
+
+        public Builder ClassID(ClassDetails value) {
+            classID = value;
+            return this;
+        }
+
+        public Builder StudentSubjects(StudentSubjects studentSubjects) {
+            id = studentSubjects.getId();
+            studentID = studentSubjects.getStudentID();
+            subjectID = studentSubjects.getSubjectID();
+            examID = studentSubjects.getExamID();
+            classID = studentSubjects.getClassID();
+            return this;
+
+        }
+
+        public StudentSubjects build() {
+            return new StudentSubjects(this);
+        }
+
+    }
+
     public Long getId() {
         return id;
     }
-    
-    public List<Subjects> getSubjectID() {
-        return subjectID;
-    }
-    
+
     public List<Student> getStudentID() {
         return studentID;
     }
-    
+
+    public List<Subjects> getSubjectID() {
+        return subjectID;
+    }
+
     public List<Exams> getExamID() {
         return examID;
     }
-    
-    public List<ClassDetails> getClassID() {
+
+    public ClassDetails getClassID() {
         return classID;
     }
+
     
+
     @Override
     public int hashCode() {
         int hash = 0;

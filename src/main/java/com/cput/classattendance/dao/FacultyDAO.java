@@ -6,27 +6,26 @@
 
 package com.cput.classattendance.dao;
 
-import com.cput.classattendance.domain.Exams;
+import com.cput.classattendance.domain.Faculty;
 import com.cput.classattendance.services.Services;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
  *
- * @author 211064084
+ * @author Bradz
  */
 @Service
-public interface ExamsDAO extends Services<Exams, Long>{
+public interface FacultyDAO extends Services<Faculty,Long>{
+    public void create();
     
-    public void create(Exams s);
+    public List<Faculty> getAllRecords();
     
-    public List<Exams> getAllRecords();
+    public Faculty getRecord(Long id);
     
-    public Exams getRecord(Long id);
+    public void updateRecord(Long old, Faculty updated);
     
-    public void updateRecord(Long old, Exams updated);
+    public void deleteRecord(Faculty s);
     
-    public void deleteRecord(Exams s);
-    
-    public List<Exams> findAll();
+    public List<Faculty> findAll();
 }

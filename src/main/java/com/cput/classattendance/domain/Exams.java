@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
@@ -36,6 +37,10 @@ public class Exams implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date date;
     //student subjects embedable? spe;;ing?
+    @ManyToOne
+    @JoinColumn(name = "exam_id")
+    private StudentSubjects studentSubjects;
+    
 
     private Exams(Builder builder) {
         id = builder.id;
@@ -121,6 +126,10 @@ public class Exams implements Serializable {
         this.date = date;
     }
 
+    public StudentSubjects getStudentSubjects() {
+        return studentSubjects;
+    }
+
     public static class Builder {
 
         private Long id;
@@ -166,6 +175,7 @@ public class Exams implements Serializable {
             this.date = value;
             return this;
         }
+        
 
         public Builder Exams(Exams value) {
             id = value.getId();
