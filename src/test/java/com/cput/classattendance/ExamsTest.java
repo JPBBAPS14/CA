@@ -36,9 +36,9 @@ public class ExamsTest {
         //Date date1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(oldstring);
         String end = "2014-08-14 11:30:00.0";
         Exams e = new Exams.Builder()
-                .startTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
-                .date(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(date)) 
-                .endTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(end))
+                .startTime(classStart)//new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
+                .date(date)//new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(date))
+                .endTime(end)//new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(end))
                 .subject("Development Softtware 3")
                 .venue("2.11 engineering")
                 .build();
@@ -52,14 +52,15 @@ public class ExamsTest {
         String date = "2014-08-14 10:00:00.0";
         //Date date1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(oldstring);
         String end = "2014-08-14 11:30:00.0";
-        Exams e = new Exams.Builder()
-                .startTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
-                .date(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(date)) 
-                .endTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(end))
+        Exams updatedExams = new Exams.Builder()
+                //.Exams(exams)
+                .startTime(classStart)//new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
+                .date(date)//new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(date))
+                .endTime(end)//new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(end))
                 .subject("Development Softtware 2")
                 .venue("2.11 engineering")
                 .build();
-        Assert.assertEquals(e.getSubject(), "Development Softtware 2");
+        Assert.assertEquals(updatedExams.getSubject(), "Development Softtware 2");
  
     }
 

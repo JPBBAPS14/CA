@@ -33,7 +33,7 @@ public class ClassTest {
     // public void hello() {}
 
     @Test
-    public void testCreation() throws Exception {
+    /*public void testCreation() throws Exception {
         String classStart = "2014-08-14 10:00:00.0";
         //Date date1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(oldstring);
         String classEnd = "2014-08-14 11:30:00.0";
@@ -60,7 +60,7 @@ public class ClassTest {
         Assert.assertEquals(c.getEndTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classEnd));
  
     }
-    
+    */
     @BeforeClass
     public static void setUpClass() throws Exception {
     }

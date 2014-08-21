@@ -30,17 +30,18 @@ public class Exams implements Serializable {
     //@PrimaryKey
     private String venue;
     private String subject;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date startTime;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date endTime;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date date;
+    //@Temporal(javax.persistence.TemporalType.DATE)
+    private String startTime;
+    //@Temporal(javax.persistence.TemporalType.DATE)
+    private String endTime;
+    //@Temporal(javax.persistence.TemporalType.DATE)
+    private String date;
     //student subjects embedable? spe;;ing?
     @ManyToOne
     @JoinColumn(name = "exam_id")
     private StudentSubjects studentSubjects;
     
+    private Exams(){}
 
     private Exams(Builder builder) {
         id = builder.id;
@@ -102,27 +103,27 @@ public class Exams implements Serializable {
         this.subject = subject;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -137,12 +138,12 @@ public class Exams implements Serializable {
         //@PrimaryKey
         private String venue;
         private String subject;
-        @Temporal(javax.persistence.TemporalType.DATE)
-        private Date startTime;
-        @Temporal(javax.persistence.TemporalType.DATE)
-        private Date endTime;
-        @Temporal(javax.persistence.TemporalType.DATE)
-        private Date date;
+        //@Temporal(javax.persistence.TemporalType.DATE)
+        private String startTime;
+        //@Temporal(javax.persistence.TemporalType.DATE)
+        private String endTime;
+        //@Temporal(javax.persistence.TemporalType.DATE)
+        private String date;
         
         public Builder(){}
         
@@ -161,17 +162,17 @@ public class Exams implements Serializable {
             return this;
         }
 
-        public Builder startTime(Date value) {
+        public Builder startTime(String value) {
             this.startTime = value;
             return this;
         }
 
-        public Builder endTime(Date value) {
+        public Builder endTime(String value) {
             this.endTime = value;
             return this;
         }
 
-        public Builder date(Date value) {
+        public Builder date(String value) {
             this.date = value;
             return this;
         }

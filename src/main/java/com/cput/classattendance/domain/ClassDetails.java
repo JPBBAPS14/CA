@@ -7,7 +7,6 @@
 package com.cput.classattendance.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
 
 /**
  *
@@ -33,10 +31,10 @@ public class ClassDetails implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date startTime;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date endTime;
+    //@Temporal(javax.persistence.TemporalType.DATE)
+    private String startTime;
+    //@Temporal(javax.persistence.TemporalType.DATE)
+    private String endTime;
     @ManyToOne
     @JoinColumn(name = "class_id",insertable = false, updatable = false)
     private Lecturer lecturerID;
@@ -50,6 +48,10 @@ public class ClassDetails implements Serializable {
         id = builder.id;
         startTime = builder.startTime;
         endTime = builder.endTime;
+    }
+    
+     private ClassDetails() {
+
     }
     
     public Long getId() {
@@ -82,22 +84,22 @@ public class ClassDetails implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cput.classattendance.domain.Class[ id=" + id + " ]";
+        return "com.cput.classattendance.domain.ClassDetails[ id=" + id + " ]";
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
@@ -116,10 +118,10 @@ public class ClassDetails implements Serializable {
      public static class Builder {
 
         private Long id;
-        @Temporal(javax.persistence.TemporalType.DATE)
-        private Date startTime;
-        @Temporal(javax.persistence.TemporalType.DATE)
-        private Date endTime;
+        //@Temporal(javax.persistence.TemporalType.DATE)
+        private String startTime;
+        //@Temporal(javax.persistence.TemporalType.DATE)
+        private String endTime;
         
         public Builder(){}
         
@@ -128,12 +130,12 @@ public class ClassDetails implements Serializable {
             return this;
         }
 
-        public Builder startTime(Date value) {
+        public Builder startTime(String  value) {
             this.startTime = value;
             return this;
         }
 
-        public Builder endTime(Date value) {
+        public Builder endTime(String  value) {
             this.endTime = value;
             return this;
         }

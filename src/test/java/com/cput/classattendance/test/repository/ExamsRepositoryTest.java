@@ -49,9 +49,9 @@ public class ExamsRepositoryTest {
         String end = "2014-08-14 11:30:00.0";
         repo = ctx.getBean(ExamsRepository.class);
         Exams e = new Exams.Builder()
-                .startTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
-                .date(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(date))
-                .endTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(end))
+                .startTime(classStart)//new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
+                .date(date)//new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(date))
+                .endTime(end)//new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(end))
                 .subject("Development Softtware 3")
                 .venue("2.11 engineering")
                 .build();
@@ -69,7 +69,7 @@ public class ExamsRepositoryTest {
     }
 
     @Test(dependsOnMethods = "readExams", enabled = true)
-    private void updateSExams() throws ParseException {
+    private void updateExams() throws ParseException {
 
         String classStart = "2014-08-14 10:00:00.0";
         String date = "2014-08-14 10:00:00.0";
@@ -80,9 +80,9 @@ public class ExamsRepositoryTest {
         Exams exams = repo.findOne(id);
         Exams updatedExams = new Exams.Builder()
                 .Exams(exams)
-                .startTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
-                .date(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(date))
-                .endTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(end))
+                .startTime(classStart)//new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
+                .date(date)//new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(date))
+                .endTime(end)//new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(end))
                 .subject("Development Softtware 2")
                 .venue("2.11 engineering")
                 .build();

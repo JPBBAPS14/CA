@@ -5,17 +5,17 @@
  */
 package com.cput.classattendance.test.repository;
 
-import com.cput.classattendance.app.conf.ConfConnectionConfig;
 import com.cput.classattendance.domain.ClassDetails;
 import com.cput.classattendance.repository.ClassDetailsRepository;
 import com.cput.classattendance.test.ConnectionConfigTest;
 import static com.cput.classattendance.test.repository.ClassDetailsRepositoryTest.ctx;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.assertj.core.util.ToString;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
-import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -44,8 +44,8 @@ public class ClassDetailsRepositoryTest {
         String classEnd = "2014-08-14 11:30:00.0";
         ClassDetails c = new ClassDetails
                 .Builder()
-                .startTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
-                .endTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classEnd))
+                .startTime("2014-08-14 10:00:00.0")//(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
+                .endTime("2014-08-14 11:30:00.0")//(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classEnd))
                 .build();
 
         repo.save(c);
@@ -59,7 +59,7 @@ public class ClassDetailsRepositoryTest {
         repo = ctx.getBean(ClassDetailsRepository.class);
         ClassDetails b = repo.findOne(id);
         String classEnd = "2014-08-14 11:30:00.0";
-        Assert.assertEquals(b.getEndTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classEnd));
+        Assert.assertEquals(b.getEndTime(), classEnd);//("yyyy-MM-dd HH:mm:ss.S").parse(classEnd));
 
     }
 
@@ -72,14 +72,15 @@ public class ClassDetailsRepositoryTest {
         String classEnd = "2014-08-14 10:00:00.0";
         ClassDetails c = new ClassDetails
                 .Builder()
-                .startTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
-                .endTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classEnd))
+                .ClassDetails(b)
+                .startTime(classStart)//(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
+                .endTime(classEnd)//(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classEnd))
                 .build();
 
         repo.save(c);
 
         ClassDetails newClassDetails = repo.findOne(id);
-        Assert.assertEquals(newClassDetails.getEndTime(), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classEnd));//201.0
+        Assert.assertEquals(newClassDetails.getEndTime(), classEnd);//new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classEnd));//201.0
 
     }
 
