@@ -40,9 +40,8 @@ public class ClassDetailsDAOImpl implements ClassDetailsDAO{
     @Override
     public void updateRecord(Long old, ClassDetails updated) {
         id = old;
-        classDetailsRepository = ctx.getBean(ClassDetailsRepository.class);
-        ClassDetails eOld = classDetailsRepository.findOne(old);
-        ClassDetails updatedExam = updated;
+       
+        ClassDetails eOld = classDetailsRepository.findOne(id);       
         eOld = updated;
         classDetailsRepository.save(eOld);
     }
@@ -82,7 +81,7 @@ public class ClassDetailsDAOImpl implements ClassDetailsDAO{
 
     @Override
     public void create(ClassDetails s) {
-
+        classDetailsRepository.save(s);
     }
     
 }

@@ -15,7 +15,7 @@ import java.util.List;
  * @author Bradz
  */
 public interface CourseDAO extends Services<Course,Long>{
-    public void create();
+    public void create(Course object);
     
     public List<Course> getAllRecords();
     
