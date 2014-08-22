@@ -32,7 +32,7 @@ public class ClassDetails implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     //@Temporal(javax.persistence.TemporalType.DATE)
-    private String startTime;
+    private String startTime; //should be written as 2014-08-14 10:30 year-month-day (space) time in non military format
     //@Temporal(javax.persistence.TemporalType.DATE)
     private String endTime;
     @ManyToOne
