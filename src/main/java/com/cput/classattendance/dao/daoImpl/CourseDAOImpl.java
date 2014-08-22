@@ -78,8 +78,8 @@ public class CourseDAOImpl implements CourseDAO {
     }
 
     @Override
-    public void create() {
-
+    public void create(Course entity) {
+        courseRepository.save(entity);
     }
 
 }

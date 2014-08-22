@@ -3,54 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package com.cput.classattendance.services.servicesImpl;
 
-package com.cput.classattendance.dao.daoImpl;
-
-import com.cput.classattendance.dao.ClassDetailsDAO;
 import com.cput.classattendance.domain.ClassDetails;
 import com.cput.classattendance.repository.ClassDetailsRepository;
+import com.cput.classattendance.services.AllClassesStartingService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 /**
  *
- * @author Jean-Paul
+ * @author 211064084
  */
-@Service 
-public class ClassDetailsDAOImpl implements ClassDetailsDAO{
-    
+@Service
+public class AllClassesStartingServiceImpl implements AllClassesStartingService {
+
     @Autowired
     private ClassDetailsRepository classDetailsRepository;
 
-    public static ApplicationContext ctx;
-    private Long id;
-
     @Override
-    public List<ClassDetails> getAllRecords() {
-        return classDetailsRepository.findAll();
-    }
+    public List<ClassDetails> getAllClassesStartingAt(String startingTime) {
+        List<ClassDetails> classDetails = new ArrayList<>();
+        List<ClassDetails> allClassDetails = classDetailsRepository.findAll();// = new ArrayList<>();
+        //List<ClassDetails> all 
+        for (ClassDetails cd : allClassDetails) {
+            if (cd.getStartTime().equals(startingTime)) {
+                classDetails.add(cd);
+            }
+        }
 
-    @Override
-    public ClassDetails getRecord(Long id) {
-        return classDetailsRepository.findOne(id);
+        return classDetails;
     }
-
-    @Override
-    public void updateRecord(Long old, ClassDetails updated) {
-        id = old;
-       
-        ClassDetails eOld = classDetailsRepository.findOne(id);       
-        eOld = updated;
-        classDetailsRepository.save(eOld);
-    }
-
-    @Override
-    public void deleteRecord(ClassDetails s) {
-        classDetailsRepository.delete(s);
-    }
-
+//the bottom section you can copy abnd paste from your DAO implmentation classes
     @Override
     public List<ClassDetails> findAll() {
         return classDetailsRepository.findAll();
@@ -79,9 +65,4 @@ public class ClassDetailsDAOImpl implements ClassDetailsDAO{
         classDetailsRepository.delete(entity);
     }
 
-    @Override
-    public void create(ClassDetails s) {
-        classDetailsRepository.save(s);
-    }
-    
 }

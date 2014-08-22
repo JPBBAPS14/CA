@@ -49,6 +49,7 @@ public class CourseRepositoryTest {
                 .Type("Software Development")
                 .build();
         repo.save(c);
+        
         id = c.getId();
         System.out.println(id);
         Assert.assertNotNull(c);        
@@ -59,7 +60,7 @@ public class CourseRepositoryTest {
      {
          repo = ctx.getBean(CourseRepository.class);
          Course c = repo.findOne(id);
-         Assert.assertEquals(c.getCourseID(),"1001");
+         Assert.assertEquals(c.getCourseID(),1001);
      }
      
      @Test(dependsOnMethods = "readCourse", enabled = true)
