@@ -38,7 +38,7 @@ public class ClassDetails implements Serializable {
     @ManyToOne
     @JoinColumn(name = "class_id",insertable = false, updatable = false)
     private Lecturer lecturerID;
-    @OneToMany(targetEntity=StudentSubjects.class, mappedBy="examID", fetch=FetchType.EAGER)
+    @OneToMany(targetEntity=StudentSubjects.class, mappedBy="classID", fetch=FetchType.EAGER)
     private List<StudentSubjects> studentSubjects;
     @ManyToOne
     @JoinColumn(name = "class_id",insertable = false, updatable = false)

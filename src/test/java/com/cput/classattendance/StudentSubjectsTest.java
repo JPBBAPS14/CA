@@ -7,7 +7,6 @@
 package com.cput.classattendance;
 
 import com.cput.classattendance.domain.ClassDetails;
-import com.cput.classattendance.domain.Exams;
 import com.cput.classattendance.domain.Student;
 import com.cput.classattendance.domain.StudentSubjects;
 import com.cput.classattendance.domain.Subjects;
@@ -55,13 +54,7 @@ public class StudentSubjectsTest {
 //        String classStart = "2014-08-14 10:00:00.0";
 //        String date = "2014-08-14 10:00:00.0";
 //        String end = "2014-08-14 11:30:00.0";
-//        List<Exams> exam = (List<Exams>) new Exams.Builder()
-//                .startTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(classStart))
-//                .date(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(date)) 
-//                .endTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(end))
-//                .subject("Development Softtware 3")
-//                .venue("2.11 engineering")
-//                .build();
+
 //        
 //        List<ClassDetails> clas = (List<ClassDetails>) new ClassDetails
 //                .Builder()
@@ -72,7 +65,6 @@ public class StudentSubjectsTest {
 //        
 //         StudentSubjects s = new StudentSubjects.Builder(stud)
 //                 .SubjectID(sub)
-//                 .ExamID(exam)
 //                 .ClassID(clas)
 //                 .build();
 //         

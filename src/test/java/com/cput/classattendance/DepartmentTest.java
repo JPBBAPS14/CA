@@ -33,7 +33,6 @@ public class DepartmentTest {
                 .Builder()
                     .deptID(111) 
                     .name("ND: Information Technology")
-                    .conDetails("Tel: +27 21 460 3911")
                     .facID(111)
                     .build();
                 
@@ -46,12 +45,11 @@ public class DepartmentTest {
         Department dep = new Department
                 .Builder()
                     .deptID(111) 
-                    .name("ND: Information Technology")
-                    .conDetails("Tel: +27 21 460 3910")
+                    .name("ND:Information Technology")
                     .facID(111)
                     .build();
                 
-        Assert.assertEquals(dep.getContactDetails(),"Tel: +27 21 460 3910");
+        Assert.assertEquals(dep.getName(),"ND:Information Technology");
     }
     
     @BeforeClass

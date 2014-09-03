@@ -33,9 +33,7 @@ public class StudentSubjects implements Serializable {
     
     @OneToMany(targetEntity=Subjects.class, mappedBy="studentSubjects", fetch=FetchType.EAGER)
     private List<Subjects> subjectID;
-    
-    @OneToMany(targetEntity=Exams.class, mappedBy="studentSubjects", fetch=FetchType.EAGER)
-    private List<Exams> examID;
+   
     @ManyToOne
     @JoinColumn(name = "class_id")
     private ClassDetails classID;
@@ -43,7 +41,6 @@ public class StudentSubjects implements Serializable {
     private StudentSubjects(Builder builder) {
         id = builder.id;
         subjectID = builder.subjectID;
-        examID = builder.examID;
         classID = builder.classID;
         studentID = builder.studentID;
     }
@@ -56,7 +53,6 @@ public class StudentSubjects implements Serializable {
         private Long id;
         private List<Student> studentID;
         private List<Subjects> subjectID;
-        private List<Exams> examID;
         private ClassDetails classID;
 
         public Builder(List<Student> studentID) {
@@ -73,11 +69,6 @@ public class StudentSubjects implements Serializable {
             return this;
         }
 
-        public Builder ExamID(List<Exams> value) {
-            examID = value;
-            return this;
-        }
-
         public Builder ClassID(ClassDetails value) {
             classID = value;
             return this;
@@ -87,7 +78,6 @@ public class StudentSubjects implements Serializable {
             id = studentSubjects.getId();
             studentID = studentSubjects.getStudentID();
             subjectID = studentSubjects.getSubjectID();
-            examID = studentSubjects.getExamID();
             classID = studentSubjects.getClassID();
             return this;
 
@@ -109,10 +99,6 @@ public class StudentSubjects implements Serializable {
 
     public List<Subjects> getSubjectID() {
         return subjectID;
-    }
-
-    public List<Exams> getExamID() {
-        return examID;
     }
 
     public ClassDetails getClassID() {

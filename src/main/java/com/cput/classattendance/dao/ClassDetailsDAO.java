@@ -7,7 +7,6 @@
 package com.cput.classattendance.dao;
 
 import com.cput.classattendance.domain.ClassDetails;
-import com.cput.classattendance.domain.Exams;
 import com.cput.classattendance.services.Services;
 import java.util.List;
 
