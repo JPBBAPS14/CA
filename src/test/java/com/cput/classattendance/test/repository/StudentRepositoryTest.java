@@ -44,7 +44,6 @@ public class StudentRepositoryTest {
 
          repo.save(s);
          id = s.getId();
-         System.out.println(id);
          Assert.assertNotNull(s); 
      }
      

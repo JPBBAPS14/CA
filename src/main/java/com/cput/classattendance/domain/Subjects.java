@@ -7,12 +7,15 @@
 package com.cput.classattendance.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -29,9 +32,8 @@ public class Subjects implements Serializable {
     private String name;
     private String co_ordenator;
     private String courseID;
-    @ManyToOne
-    @JoinColumn(name = "subject_id")
-    private StudentSubjects studentSubjects;
+    @OneToMany(targetEntity=StudentSubjects.class, mappedBy="subjectsID", fetch=FetchType.EAGER)
+    private List<StudentSubjects> studentSubjects;
     
     @ManyToOne
     @JoinColumn(name = "course_id")
@@ -123,7 +125,7 @@ public class Subjects implements Serializable {
         return courseID;
     }
     
-     public StudentSubjects getStudentSubjects() {
+     public List<StudentSubjects> getStudentSubjects() {
         return studentSubjects;
     }
 

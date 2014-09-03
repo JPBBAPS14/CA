@@ -28,22 +28,21 @@ public class StudentSubjects implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @OneToMany(targetEntity=Student.class, mappedBy="studentSubjects", fetch=FetchType.EAGER)
-    private List<Student> studentID;
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student studentID;
     
-    @OneToMany(targetEntity=Subjects.class, mappedBy="studentSubjects", fetch=FetchType.EAGER)
-    private List<Subjects> subjectID;
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private Subjects subjectsID;
     
-    @OneToMany(targetEntity=Exams.class, mappedBy="studentSubjects", fetch=FetchType.EAGER)
-    private List<Exams> examID;
     @ManyToOne
     @JoinColumn(name = "class_id")
     private ClassDetails classID;
 
     private StudentSubjects(Builder builder) {
         id = builder.id;
-        subjectID = builder.subjectID;
-        examID = builder.examID;
+        subjectsID = builder.subjectID;
         classID = builder.classID;
         studentID = builder.studentID;
     }
@@ -54,13 +53,16 @@ public class StudentSubjects implements Serializable {
     public static class Builder {
 
         private Long id;
-        private List<Student> studentID;
-        private List<Subjects> subjectID;
-        private List<Exams> examID;
+        private Student studentID;
+        private Subjects subjectID;
         private ClassDetails classID;
 
-        public Builder(List<Student> studentID) {
+        public Builder() {
+        }
+        
+        public Builder StudentID(Student studentID) {
             this.studentID = studentID;
+            return this;
         }
 
         public Builder setId(Long value) {
@@ -68,15 +70,11 @@ public class StudentSubjects implements Serializable {
             return this;
         }
 
-        public Builder SubjectID(List<Subjects> value) {
+        public Builder SubjectID(Subjects value) {
             subjectID = value;
             return this;
         }
 
-        public Builder ExamID(List<Exams> value) {
-            examID = value;
-            return this;
-        }
 
         public Builder ClassID(ClassDetails value) {
             classID = value;
@@ -87,7 +85,6 @@ public class StudentSubjects implements Serializable {
             id = studentSubjects.getId();
             studentID = studentSubjects.getStudentID();
             subjectID = studentSubjects.getSubjectID();
-            examID = studentSubjects.getExamID();
             classID = studentSubjects.getClassID();
             return this;
 
@@ -102,17 +99,14 @@ public class StudentSubjects implements Serializable {
     public Long getId() {
         return id;
     }
+    
 
-    public List<Student> getStudentID() {
+    public Student getStudentID() {
         return studentID;
     }
 
-    public List<Subjects> getSubjectID() {
-        return subjectID;
-    }
-
-    public List<Exams> getExamID() {
-        return examID;
+    public Subjects getSubjectID() {
+        return subjectsID;
     }
 
     public ClassDetails getClassID() {

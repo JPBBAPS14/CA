@@ -12,6 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -33,8 +35,10 @@ public class Lecturer implements Serializable {
     private String officeRoom;
     private long telephone_no;
     private String email;
+    
     @OneToMany(targetEntity=ClassDetails.class, mappedBy="lecturerID", fetch=FetchType.EAGER)
     private List<ClassDetails> classId;
+
     
     private Lecturer(Builder builder) {
         id = builder.id;
@@ -42,7 +46,6 @@ public class Lecturer implements Serializable {
         officeRoom=builder.officeRoom;
         telephone_no=builder.telephone_no;
         email=builder.email;
-        classId = builder.classId;
     }
 
     public Long getId() {
@@ -109,7 +112,7 @@ public class Lecturer implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    
     public List<ClassDetails> getClassId() {
         return classId;
     }
@@ -122,7 +125,6 @@ public class Lecturer implements Serializable {
         private String officeRoom;
         private long telephone_no;
         private String email;
-        private List<ClassDetails> classId;
 
         public Builder() {
         }
@@ -152,18 +154,12 @@ public class Lecturer implements Serializable {
             return this;
         }
 
-        public Builder classId(List<ClassDetails> value) {
-            this.classId = value;
-            return this;
-        }
-
         public Builder Lecturer(Lecturer value) {
             id = value.getId();
             name = value.getName();
             officeRoom = value.getOfficeRoom();
             telephone_no = value.getTelephone_no();
             email = value.getEmail();
-            classId = value.getClassId();
 
             return this;
         }

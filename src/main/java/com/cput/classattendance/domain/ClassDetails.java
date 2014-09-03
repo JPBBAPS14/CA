@@ -35,10 +35,12 @@ public class ClassDetails implements Serializable {
     private String startTime; //should be written as 2014-08-14 10:30 year-month-day (space) time in non military format
     //@Temporal(javax.persistence.TemporalType.DATE)
     private String endTime;
+    
     @ManyToOne
     @JoinColumn(name = "class_id",insertable = false, updatable = false)
     private Lecturer lecturerID;
-    @OneToMany(targetEntity=StudentSubjects.class, mappedBy="examID", fetch=FetchType.EAGER)
+ 
+    @OneToMany(targetEntity=StudentSubjects.class, mappedBy="classID", fetch=FetchType.EAGER)
     private List<StudentSubjects> studentSubjects;
     @ManyToOne
     @JoinColumn(name = "class_id",insertable = false, updatable = false)
@@ -46,6 +48,7 @@ public class ClassDetails implements Serializable {
     
     private ClassDetails(Builder builder) {
         id = builder.id;
+        lecturerID = builder.lecturerID;
         startTime = builder.startTime;
         endTime = builder.endTime;
     }
@@ -60,6 +63,10 @@ public class ClassDetails implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public Lecturer getLecturerID() {
+        return lecturerID;
     }
 
     @Override
@@ -102,10 +109,7 @@ public class ClassDetails implements Serializable {
     public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
-
-    public Lecturer getLecturerID() {
-        return lecturerID;
-    }
+    
 
     public List<StudentSubjects> getStudentSubjects() {
         return studentSubjects;
@@ -122,6 +126,7 @@ public class ClassDetails implements Serializable {
         private String startTime;
         //@Temporal(javax.persistence.TemporalType.DATE)
         private String endTime;
+        private Lecturer lecturerID;
         
         public Builder(){}
         
@@ -129,7 +134,12 @@ public class ClassDetails implements Serializable {
             this.id = value;
             return this;
         }
-
+        
+        public Builder lecturerID(Lecturer  value) {
+            this.lecturerID = value;
+            return this;
+        }
+        
         public Builder startTime(String  value) {
             this.startTime = value;
             return this;
