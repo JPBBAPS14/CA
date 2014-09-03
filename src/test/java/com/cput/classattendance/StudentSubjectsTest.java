@@ -33,21 +33,21 @@ public class StudentSubjectsTest {
     @Test
     public void testCreation() throws Exception {
         
-        Student stud = (Student) new Student.Builder("211121614")
+        Student stud = new Student.Builder("211121614")
                  .Name("Aiden")
                  .surname("Page")
                  .Address("any where")
                  .DOB(new Date())
                  .build();
         
-        Subjects sub = (Subjects) new Subjects.Builder("DOS300S")
+        Subjects sub = new Subjects.Builder("DOS300S")
                  .CourseID("1")
                  .Co_ordenator("Mrs G Khan")
                  .Name("DEVLELOPMENT SOFTWARE 3")
                  .build();
         
         
-        ClassDetails clas = (ClassDetails) new ClassDetails
+        ClassDetails clas = new ClassDetails
                 .Builder()
                 .startTime("10:00")
                 .endTime("11:30")

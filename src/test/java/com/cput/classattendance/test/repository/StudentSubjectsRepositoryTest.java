@@ -53,7 +53,7 @@ public class StudentSubjectsRepositoryTest {
          repo3 = ctx.getBean(LecturerRepository.class);
          repo4 = ctx.getBean(ClassDetailsRepository.class);
 
-         Student stud = (Student) new Student.Builder("211121614")
+         Student stud = new Student.Builder("211121614")
                  .Name("Aiden")
                  .surname("Page")
                  .Address("any where")
@@ -64,7 +64,7 @@ public class StudentSubjectsRepositoryTest {
          id = stud.getId();
          Assert.assertNotNull(stud);
         
-        Subjects sub = (Subjects) new Subjects.Builder("DOS300S")
+        Subjects sub = new Subjects.Builder("DOS300S")
                  .CourseID("1")
                  .Co_ordenator("Mrs G Khan")
                  .Name("DEVLELOPMENT SOFTWARE 3")
@@ -86,7 +86,7 @@ public class StudentSubjectsRepositoryTest {
          Assert.assertNotNull(lec);
         
         
-        ClassDetails clas = (ClassDetails) new ClassDetails.Builder()
+        ClassDetails clas = new ClassDetails.Builder()
                 .lecturerID(lec)
                 .startTime("10:00")
                 .endTime("11:30")
@@ -111,9 +111,9 @@ public class StudentSubjectsRepositoryTest {
      @Test(dependsOnMethods = "createStudentSubjects", enabled = true)
      public void readStudentSubjects(){
          repo = ctx.getBean(StudentSubjectsRepository.class);
-         repo1 = ctx.getBean(StudentRepository.class);
          StudentSubjects studentSubjects = repo.findOne(id);
          Assert.assertEquals(studentSubjects.getStudentID().getStudentID(), "211121614");
+         
          
      }
      
@@ -124,7 +124,7 @@ public class StudentSubjectsRepositoryTest {
          
          Student stud = repo1.findOne(id);
          
-         Student updatedstud = (Student) new Student.Builder("211121614")
+         Student updatedstud = new Student.Builder("211121614")
                  .Student(stud)
                  .Address("some where else")
                  .build();
