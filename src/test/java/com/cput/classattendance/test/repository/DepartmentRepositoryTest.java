@@ -45,7 +45,6 @@ public class DepartmentRepositoryTest {
          Department d = new Department.Builder()
                  .deptID(111) 
                  .name("ND: Information Technology")
-                 .conDetails("Tel: +27 21 460 3911")
                  .facID(111)
                  .build();
          
@@ -60,7 +59,7 @@ public class DepartmentRepositoryTest {
      {
          repo = ctx.getBean(DepartmentRepository.class);
          Department d = repo.findOne(id);
-         Assert.assertEquals(d.getDepartmentID(), "111");
+         Assert.assertEquals(d.getDepartmentID(), 111);
      }
      
      @Test(dependsOnMethods = "readDepartment", enabled = true)

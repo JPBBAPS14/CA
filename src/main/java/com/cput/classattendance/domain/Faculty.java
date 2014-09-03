@@ -34,6 +34,8 @@ public class Faculty implements Serializable {
     @OneToMany(targetEntity=Department.class, mappedBy="faculty", fetch=FetchType.EAGER)
     private List<Department> department;
     
+    private Faculty(){}
+    
     private Faculty(Builder builder)
 	{
                 ID = builder.id;

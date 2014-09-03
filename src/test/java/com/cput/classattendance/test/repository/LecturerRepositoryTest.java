@@ -60,6 +60,7 @@ public class LecturerRepositoryTest {
         repo = ctx.getBean(LecturerRepository.class);
         Lecturer b = repo.findOne(id);
         Lecturer l = new Lecturer.Builder()
+                .Lecturer(b)
                 .email("123leonsmall123@hotmail.com")
                 .name("jj  abrahams")
                 .officeRoom("8.1")

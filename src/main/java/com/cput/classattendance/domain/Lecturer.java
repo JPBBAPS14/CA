@@ -40,6 +40,8 @@ public class Lecturer implements Serializable {
     private List<ClassDetails> classId;
 
     
+    private Lecturer(){}
+    
     private Lecturer(Builder builder) {
         id = builder.id;
         name=builder.name;

@@ -25,8 +25,7 @@ public class Department implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long ID;
     private int DepartmentID;
-    private String Name;
-    private String ContactDetails;
+    private String Name;    
     @ManyToOne
     @JoinColumn(name = "Faculty_ID")
     private Faculty faculty;
@@ -36,17 +35,19 @@ public class Department implements Serializable {
     {
         ID = builder.id;
 	DepartmentID = builder.deptID;
-	Name = builder.name;
-	ContactDetails = builder.conDetails;
+	Name = builder.name;	
 	FacultyID = builder.facID;
+    }
+    
+    private Department()
+    {
     }
     
     public static class Builder
     {
         private Long id;
         private int deptID;
-        private String name;
-        private String conDetails;
+        private String name;      
         private int facID;
         
         public Builder()
@@ -72,11 +73,6 @@ public class Department implements Serializable {
             return this;
         }
         
-        public Builder conDetails(String value)
-        {
-            this.conDetails = value;
-            return this;
-        }
         
         public Builder facID(int value)
         {
@@ -89,7 +85,6 @@ public class Department implements Serializable {
             id = value.getID();
             deptID = value.getDepartmentID();
             name = value.getName();
-            conDetails = value.getContactDetails();
             facID = value.getFacultyID();
             return this;
         }
@@ -125,14 +120,6 @@ public class Department implements Serializable {
 
     public void setName(String Name) {
         this.Name = Name;
-    }
-
-    public String getContactDetails() {
-        return ContactDetails;
-    }
-
-    public void setContactDetails(String ContactDetails) {
-        this.ContactDetails = ContactDetails;
     }
 
     public int getFacultyID() {

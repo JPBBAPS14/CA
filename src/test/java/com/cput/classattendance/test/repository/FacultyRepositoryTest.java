@@ -57,12 +57,13 @@ public class FacultyRepositoryTest {
          Assert.assertEquals(f.getFacultyID(),101);
      }
      
-     @Test(dependsOnMethods = "readStudent", enabled = true)
+     @Test(dependsOnMethods = "readFaculty", enabled = true)
      private void updateFaculty()
      {
          repo = ctx.getBean(FacultyRepository.class);
          Faculty f = repo.findOne(id);
          Faculty updatedFaculty = new Faculty.Builder()
+                 .Faculty(f)
                  .Name("Informatics And Design")
                  .build();
          repo.save(updatedFaculty);
